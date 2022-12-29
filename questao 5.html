@@ -27,19 +27,19 @@
 
         <h6> Tabuada: </h6>
 
-        <ul id="numbersList" class="list-group"></ul>
+        <ul id="multiplicationTableList" class="list-group"></ul>
 
     </form>
 
     <script>
 
-        var ulList = document.getElementById('numbersList'); //Criação de variável que armazena a lista HTML
+        var ulList = document.getElementById('multiplicationTableList'); //Criação de variável que armazena a lista HTML
 
         var i;
 
         $("#btGerarTabuada").on("click", function () { //Função disparada pelo evento de clique no botão "btGerarTabuada"
 
-            document.getElementById("numbersList").innerHTML = ""; //Limpa a lista HTML
+            document.getElementById("multiplicationTableList").innerHTML = ""; //Limpa a lista HTML
 
             num = parseInt($("#inputNum").val()); //Armazena o valor contido no input de entrada
 
