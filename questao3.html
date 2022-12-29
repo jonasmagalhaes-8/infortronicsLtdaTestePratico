@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Questao 3</title>
+    <link type="text/css" rel="stylesheet" href="Bootstrap/bootstrap.css" />
+</head>
+    <script src="Scripts/Bootstrap/bootstrap.min.js"></script> 
+    <script src="Scripts/jquery-3.6.3.min.js"></script>  
+   
+<body>
+    <form>
+
+        <br/>
+
+        <input type="number" class="form-control" id="inputCep" placeholder="Insira aqui um CEP"/>
+
+        <br>
+
+        <button type="button" id="btBuscaCep" class="btn btn-primary">OK</button>
+        
+        <br> <br>
+        
+
+        <input type="text" class="form-control" readonly id="rua" placeholder="Rua"/>
+        <input type="text" class="form-control" readonly id="bairro" placeholder="Bairro"/>
+        <input type="text" class="form-control" readonly id="cidade" placeholder="Cidade"/>
+        <input type="text" class="form-control" readonly id="estado" placeholder="Estado"/>
+
+    </form>
+
+    <script>
+
+        var cep;
+
+        $("#btBuscaCep").on("click", function () { //Função disparada pelo evento de clique no botão "btBuscaCep"
+
+            
+            var cep = $("#inputCep").val();
+
+            if(cep !== "" && cep.length == 8){
+
+               
+
+                    $.ajax({
+                        url: "https://viacep.com.br/ws/"+cep+"/json/",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+                            
+                            if(data.erro !== undefined){
+                                alert("CEP inválido ou não encontrado");
+                            }else{
+                                document.getElementById('rua').value = "Rua: " + data.logradouro;
+                                document.getElementById('bairro').value = "Bairro: " + data.bairro;
+                                document.getElementById('cidade').value = "Cidade: " + data.localidade;
+                                document.getElementById('estado').value = "Estado: " + data.uf;
+                            }
+                        }
+                    });
+
+                }else{
+                    alert("CEP deve conter 8 digitos");
+                }
+        }
+        );
+    </script>
+
+</body>
+</html>
