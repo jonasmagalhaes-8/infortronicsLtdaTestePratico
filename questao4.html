@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Questao 4</title>
+    <link type="text/css" rel="stylesheet" href="Bootstrap/bootstrap.css" />
+</head>
+    <script src="Scripts/jquery-3.6.3.min.js"></script> 
+    <script src="Scripts/Bootstrap/bootstrap.min.js"></script> 
+   
+<body>
+    <form>
+
+        <div class="form-group">
+
+        <br/>
+
+        <input type="number" class="form-control" id="inputNum" placeholder="Insiria aqui um número e descubra se ele é perfeito!"/>
+        </div>
+
+        <br/>
+
+        <button type="button" id="btVerificaNumPerfeito" class="btn btn-primary">OK</button>
+
+    </form>
+
+    <script>
+
+        var i,num,sumDividers=0;
+
+        $("#btVerificaNumPerfeito").on("click", function () { //Função disparada pelo evento de clique no botão "btVerificaNumPerfeito"
+
+            sumDividers=0;
+
+            num = parseInt($("#inputNum").val()); //Converte pra Inteiro o valor informado
+
+            for(i=1;i<num;i++) //Loop pra verificar todos os divisores do número
+            {
+                if(num%i==0) {
+                //Se o número for divisivel pelo contador i, o somatório de divisores recebe o valor contido em i
+                    sumDividers+=i;
+                }
+                
+            }
+            
+            //Se a soma dos divisores do número for igual ao número, então o número é perfeito
+            if(sumDividers==num && num!=0)
+            alert("O número é perfeito!");
+            else
+            alert("O número não é perfeito");
+
+            document.getElementById('inputNum').value = ""; //Limpa input
+        }
+        );
+
+    </script>
+
+</body>
+</html>
