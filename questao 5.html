@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Questao 5</title>
+    <link type="text/css" rel="stylesheet" href="Bootstrap/bootstrap.css" />
+</head>
+    <script src="Scripts/jquery-3.6.3.min.js"></script> 
+    <script src="Scripts/Bootstrap/bootstrap.min.js"></script> 
+   
+<body>
+    <form>
+
+        <div class="form-group">
+
+        <br/>
+
+        <input type="number" class="form-control" id="inputNum" placeholder="Informe um número:"/>
+        </div>
+
+        <br/>
+
+        <button type="button" id="btGerarTabuada" class="btn btn-primary">Gerar tabuada</button>
+
+        <br/><br/>
+
+        <h6> Tabuada: </h6>
+
+        <ul id="numbersList" class="list-group"></ul>
+
+    </form>
+
+    <script>
+
+        var ulList = document.getElementById('numbersList'); //Criação de variável que armazena a lista HTML
+
+        var i;
+
+        $("#btGerarTabuada").on("click", function () { //Função disparada pelo evento de clique no botão "btGerarTabuada"
+
+            document.getElementById("numbersList").innerHTML = ""; //Limpa a lista HTML
+
+            num = parseInt($("#inputNum").val()); //Armazena o valor contido no input de entrada
+
+            for (i = 1; i <= 10; i++) {
+                
+                var newNumber = document.createElement("li"); //Cria um novo item pra lista HTML
+
+                newNumber.classList.add("list-group-item"); //Define que a classe deste novo item será nos padrões do Bootstrap
+
+                newNumber.innerHTML = num + " * " + i + " = " + num*i ; //Seta o valor/resultado no novo item
+
+                ulList.appendChild(newNumber); //Adiciona na lista HTML o novo item
+            }
+
+            document.getElementById('inputNum').value = ""; //Limpa input
+        }
+        );
+    </script>
+
+</body>
+</html>
